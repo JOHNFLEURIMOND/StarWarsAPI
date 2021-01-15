@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+
+#dist folder
+dist/
+
+#storybook output folder
+.public
+
+#storybook ts build output
+build/
+
+
+assets/.env
+
+#Webstorm metadata
+.idea/
+*.iml
+
+#VSCode metadata
+.vscode/
+
+# Dependency directory
+node_modules/
+
+# macOS X files
+.DS_Store
