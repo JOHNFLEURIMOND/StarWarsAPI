@@ -1,13 +1,12 @@
 import React from "react";
 import { Animated } from "react-animated-css";
 import { Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 import { fleurimondColors } from "../theme";
-
 
 const useStyles = makeStyles({
   nav: {
@@ -54,22 +53,27 @@ const JFHeader = (): JSX.Element => {
       <AppBar position="relative" className={classes.nav}>
         <Toolbar>
           <Typography variant="h6" className="Navbar" noWrap>
-              <ul className={classes.ul}>
-                <li className={classes.li}>
-                  <Link to="/"  className={classes.a}>Marvel</Link>
-                </li>
-                <li className={classes.li}>
-                  <Link to="/CharacterPage" className={classes.a}>Characters</Link>
-                </li>
-                <li className={classes.li}>
-                  <Link to="/SignUp"  className={classes.a}>About Us</Link>
-                </li>
-              </ul>
+            <ul className={classes.ul}>
+              <li className={classes.li}>
+                <Link to="/" className={classes.a}>
+                  Marvel
+                </Link>
+              </li>
+              <li className={classes.li}>
+                <Link to="/CharacterPage" className={classes.a}>
+                  Characters
+                </Link>
+              </li>
+              <li className={classes.li}>
+                <Link to="/SignUp" className={classes.a}>
+                  About Us
+                </Link>
+              </li>
+            </ul>
           </Typography>
         </Toolbar>
       </AppBar>
     </Animated>
-
   );
 };
 

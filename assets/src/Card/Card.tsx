@@ -21,17 +21,17 @@ const useStyles = makeStyles({
     width: "100%",
     backgroundColor: fleurimondColors.white,
     textAlign: "center",
-    display: "block"
+    display: "block",
   },
 
   cardImage: {
-    paddingTop: "59%"
+    paddingTop: "59%",
   },
 
   h2: {
     textAlign: "center",
-    padding: "23px 2px 13px 0 !important"
-  }
+    padding: "23px 2px 13px 0 !important",
+  },
 });
 
 const JFHero = (): JSX.Element => {
@@ -55,7 +55,7 @@ const JFHero = (): JSX.Element => {
   const getStarWarsFilmTitle = async () => {
     await axios
       .get("https://swapi.dev/api/films/")
-      .then(result => setFilmsTitle(result.data.results));
+      .then((result) => setFilmsTitle(result.data.results));
   };
 
   return (
@@ -87,7 +87,6 @@ const JFHero = (): JSX.Element => {
               </Animated>
             </Grid>
           ))}
-
         </Grid>
       </Container>
     </div>

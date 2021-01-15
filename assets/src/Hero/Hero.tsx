@@ -1,11 +1,10 @@
 import React from "react";
 import { Animated } from "react-animated-css";
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 
 import { fleurimondColors } from "../theme";
-
 
 const useStyles = makeStyles({
   container: {
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
     width: "100%",
     backgroundColor: fleurimondColors.black,
     textAlign: "center",
-    display: "block"
+    display: "block",
   },
 });
 
@@ -27,7 +26,6 @@ const JFHero = (): JSX.Element => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-
       {/* Hero unit */}
       <Container maxWidth="sm">
         <Animated
@@ -38,12 +36,10 @@ const JFHero = (): JSX.Element => {
         >
           <Typography component="h1" variant="h2" align="center" gutterBottom>
             Starwars
-            </Typography>
+          </Typography>
         </Animated>
-
       </Container>
     </div>
-
   );
 };
 

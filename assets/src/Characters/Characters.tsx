@@ -6,7 +6,6 @@ import { Animated } from "react-animated-css";
 import shouldForwardProp from "@styled-system/should-forward-prop";
 import { space, flexbox, typography } from "styled-system";
 
-
 import { fleurimondColors } from "../theme";
 
 const ScheduleStyles = css({
@@ -58,7 +57,6 @@ const JFSchedule = (): JSX.Element => {
 
   return (
     <div>
-
       <Animated
         animationInDelay={0}
         animationIn="slideInUp"
@@ -69,7 +67,6 @@ const JFSchedule = (): JSX.Element => {
           <code>{message && JSON.stringify(message, null, 4)}</code>
         </pre>
       </Animated>
-
     </div>
   );
 };

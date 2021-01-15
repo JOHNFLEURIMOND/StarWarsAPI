@@ -39,7 +39,6 @@ const Homepage = (): JSX.Element => {
   console.log(setschedule);
   return (
     <div>
-
       <div>
         <pre>
           <code>

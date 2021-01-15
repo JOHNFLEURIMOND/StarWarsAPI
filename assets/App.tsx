@@ -1,11 +1,11 @@
 import "react-app-polyfill/ie11";
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Header from '../assets/src/Header/Header';
-import Hero from '../assets/src/Hero/Hero';
-import CharacterPage from '../assets/src/CharacterPage/CharacterPage';
-import Card from '../assets/src/Card/Card';
+import { makeStyles } from "@material-ui/core/styles";
+import Header from "../assets/src/Header/Header";
+import Hero from "../assets/src/Hero/Hero";
+import CharacterPage from "../assets/src/CharacterPage/CharacterPage";
+import Card from "../assets/src/Card/Card";
 
 import { fleurimondColors } from "./src/theme";
 
@@ -24,7 +24,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 const Homepage = (): JSX.Element => {
   const classes = useStyles();
 
@@ -34,7 +33,6 @@ const Homepage = (): JSX.Element => {
       <Hero />
       <Card />
     </div>
-
   );
 };
 
@@ -50,4 +48,3 @@ const App = () => {
 };
 
 export default App;
-
