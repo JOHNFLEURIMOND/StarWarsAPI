@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import { Animated } from "react-animated-css";
 import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Header from '../Header/Header';
-import Hero from '../Hero/Hero';
+import Header from "../Header/Header";
+import Hero from "../Hero/Hero";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -23,17 +23,17 @@ const useStyles = makeStyles({
     width: "100%",
     backgroundColor: fleurimondColors.white,
     textAlign: "center",
-    display: "block"
+    display: "block",
   },
 
   cardImage: {
-    paddingTop: "59%"
+    paddingTop: "59%",
   },
 
   h2: {
     textAlign: "center",
-    padding: "23px 2px 13px 0 !important"
-  }
+    padding: "23px 2px 13px 0 !important",
+  },
 });
 
 const JFHero = (): JSX.Element => {
@@ -72,10 +72,10 @@ const JFHero = (): JSX.Element => {
   const getStarWarsFilmTitle = async () => {
     await axios
       .get("https://swapi.dev/api/films/")
-      .then(result => setFilmsTitle(result.data.results));
+      .then((result) => setFilmsTitle(result.data.results));
     await axios
       .get("https://swapi.dev/api/people/")
-      .then(result => setCharactersName(result.data.results));
+      .then((result) => setCharactersName(result.data.results));
   };
 
   return (
