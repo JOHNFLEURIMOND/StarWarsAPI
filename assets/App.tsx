@@ -4,8 +4,8 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "../assets/src/Header/Header";
 import Hero from "../assets/src/Hero/Hero";
-import CharacterPage from "../assets/src/CharacterPage/CharacterPage";
-import Card from "../assets/src/Card/Card";
+import CharacterPage from "./src/CharacterPage/CharacterPage";
+import Card from "./src/Card/Card";
 
 import { fleurimondColors } from "./src/theme";
 
