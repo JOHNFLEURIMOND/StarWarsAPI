@@ -37,9 +37,6 @@ const useStyles = makeStyles({
 });
 
 const JFHero = (): JSX.Element => {
-  interface StarWarsTitle {
-    title: string;
-  }
 
   interface StarWarsCharacters {
     name: string;
@@ -58,21 +55,8 @@ const JFHero = (): JSX.Element => {
     getStarWarsFilmTitle();
   }, []);
 
-  const scheduleProps: StarWarsTitle[] = [];
-
-  const [filmsTitle, setFilmsTitle]: [
-    StarWarsTitle[],
-    (posts: StarWarsTitle[]) => void
-  ] = useState(scheduleProps);
-
-  useEffect(() => {
-    getStarWarsFilmTitle();
-  }, []);
 
   const getStarWarsFilmTitle = async () => {
-    await axios
-      .get("https://swapi.dev/api/films/")
-      .then((result) => setFilmsTitle(result.data.results));
     await axios
       .get("https://swapi.dev/api/people/")
       .then((result) => setCharactersName(result.data.results));
@@ -86,30 +70,6 @@ const JFHero = (): JSX.Element => {
       <Container maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          {filmsTitle.map((filmsTitle, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Animated
-                animationInDelay={0}
-                animationIn="slideInUp"
-                animationOut="slideOutDown"
-                isVisible
-              >
-                <Card>
-                  <CardMedia
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                    className={classes.cardImage}
-                  />
-                  <CardContent className={classes.h2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {filmsTitle.title}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Animated>
-            </Grid>
-          ))}
-
           {characters.map((characters, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Animated
