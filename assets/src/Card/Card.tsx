@@ -86,7 +86,7 @@ const JFHero = (): JSX.Element => {
 
   };
 
-  const findMovieTitle = (films: object, characters: object) => {
+  const findCharacterName = (films: object, characters: object) => {
     // const translatedFilmsObject = Object.entries(films);
     // const translatedCharactersObject = Object.entries(characters);
     
@@ -129,7 +129,7 @@ const JFHero = (): JSX.Element => {
             </Grid>
           ))}
 
-          {console.log("this is from the above function", findMovieTitle(filmsTitle, characters))}
+          {console.log("this is from the above function", findCharacterName(filmsTitle, characters))}
           {characters.map((characters, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Animated
