@@ -1,7 +1,7 @@
 {
   "include": [
     "assets",
-    "test", "../fluorine-ui copy/fetcher.ts", "../fluorine-ui copy/.vscode/fetch.tsx",
+    "test", "../fluorine-ui copy/src/fetcher.ts", "../fluorine-ui copy/.vscode/fetch.tsx",
   ],
   "exclude": [
     "node_modules",

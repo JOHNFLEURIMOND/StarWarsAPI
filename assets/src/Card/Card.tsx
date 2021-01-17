@@ -87,13 +87,19 @@ const JFHero = (): JSX.Element => {
   };
 
   const findCharacterName = (films: object, characters: object) => {
-    // const translatedFilmsObject = Object.entries(films);
+    //const translatedFilmsObject = Object.keys(films);
     // const translatedCharactersObject = Object.entries(characters);
+    const filmsKeys =  Object.entries(films).forEach(([key, value]) =>
+    console.log(([key, value["characters"]]))
+  )
+    const charactersKeys =  Object.entries(characters).forEach(([key, value]) =>
+    console.log(([key, value["films"]]))
+  )
+
+    console.log("this is the films and characters:", filmsKeys, charactersKeys)
+  
+    return [filmsKeys, charactersKeys]
     
-    const filtered = Object.fromEntries(Object.entries(films).filter(([key, values]) => [key, values]))
-    const filteredC = Object.fromEntries(Object.entries(characters).filter(([key, values]) => [key,values]))
-    
-    return [filtered, filteredC]
   };
 
   return (
