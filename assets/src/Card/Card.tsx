@@ -87,7 +87,6 @@ const JFHero = (): JSX.Element => {
   };
 
   const findMovieTitle = (films: object, characters: object) => {
-    // actorsInFilm should be a function check's the that returns a boolean
     // const translatedFilmsObject = Object.entries(films);
     // const translatedCharactersObject = Object.entries(characters);
     
