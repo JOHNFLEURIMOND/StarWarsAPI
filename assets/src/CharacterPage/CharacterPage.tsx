@@ -37,7 +37,6 @@ const useStyles = makeStyles({
 });
 
 const JFHero = (): JSX.Element => {
-
   interface StarWarsCharacters {
     name: string;
     films: string;
@@ -54,7 +53,6 @@ const JFHero = (): JSX.Element => {
   useEffect(() => {
     getStarWarsFilmTitle();
   }, []);
-
 
   const getStarWarsFilmTitle = async () => {
     await axios

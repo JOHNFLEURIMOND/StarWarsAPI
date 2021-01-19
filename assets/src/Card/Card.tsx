@@ -21,19 +21,18 @@ const useStyles = makeStyles({
     width: "100%",
     backgroundColor: fleurimondColors.white,
     textAlign: "center",
-    display: "block"
+    display: "block",
   },
 
   cardImage: {
-    paddingTop: "59%"
+    paddingTop: "59%",
   },
 
   h2: {
     textAlign: "center",
-    padding: "23px 2px 13px 0 !important"
-  }
+    padding: "23px 2px 13px 0 !important",
+  },
 });
-
 
 const JFHero = (): JSX.Element => {
   interface StarWarsTitle {
@@ -69,46 +68,57 @@ const JFHero = (): JSX.Element => {
     (posts: StarWarsTitle[]) => void
   ] = useState(scheduleProps);
 
-
-
-
-
   const getStarWarsFilmTitle = async () => {
     await axios
       .get("https://swapi.dev/api/films/")
-      .then(result => setFilmsTitle(result.data.results));
+      .then((result) => setFilmsTitle(result.data.results));
   };
 
   const getStarWarsCharactersName = async () => {
     await axios
       .get("https://swapi.dev/api/people/")
-      .then(result => setCharactersName(result.data.results));
-
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=2")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=3")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=4")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=5")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=6")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=7")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=8")
+      .then((result) => setCharactersName(result.data.results));
+    await axios
+      .get("http://swapi.dev/api/people/?page=9")
+      .then((result) => setCharactersName(result.data.results));
   };
 
   const findCharacterName = (films: object, characters: object) => {
-    //const translatedFilmsObject = Object.keys(films);
-    // const translatedCharactersObject = Object.entries(characters);
-    const filmsKeys = Object.entries(films).forEach((key, value) => {
-      const keykeyValues = [key, value]
-      console.log(keykeyValues)
-      if (key[0] == "characters"){
-        return  key
-      }
-        return keykeyValues;
-    }
-    )
-    const charactersKeys = Object.entries(characters).forEach((value, key) => {
-      const characterKeyValues = [key, value]
-      console.log(characterKeyValues)
+    const filmsKeys = Object.entries(films).forEach((value) => {
+      const keykeyValues = [value[1]["url"], value[1]["title"]];
+      console.log(keykeyValues);
+
+      return keykeyValues;
+    });
+    const charactersKeys = Object.entries(characters).forEach((value) => {
+      const characterKeyValues = [value[1]["films"], value[1]["name"]];
+      console.log(characterKeyValues);
       return characterKeyValues;
-    }
-    )
+    });
 
     if (filmsKeys === charactersKeys) {
-      let arr = new Array;
-      arr.push(filmsKeys)
-      return arr;
+      return characters;
     }
   };
 
@@ -119,7 +129,6 @@ const JFHero = (): JSX.Element => {
         {/* End hero unit */}
         <Grid container spacing={4}>
           {filmsTitle.map((filmsTitle, index) => (
-
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Animated
                 animationInDelay={0}
@@ -136,8 +145,6 @@ const JFHero = (): JSX.Element => {
                   <CardContent className={classes.h2}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {filmsTitle.title}
-                      {filmsTitle.characters}
-                      {filmsTitle.url}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -145,8 +152,10 @@ const JFHero = (): JSX.Element => {
             </Grid>
           ))}
 
-          {console.log("this is from the above function", findCharacterName(filmsTitle, characters))}
-
+          {console.log(
+            "this is from the findCharacterName function",
+            findCharacterName(filmsTitle, characters)
+          )}
         </Grid>
       </Container>
     </div>
