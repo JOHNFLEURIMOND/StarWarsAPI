@@ -89,17 +89,27 @@ const JFHero = (): JSX.Element => {
   const findCharacterName = (films: object, characters: object) => {
     //const translatedFilmsObject = Object.keys(films);
     // const translatedCharactersObject = Object.entries(characters);
-    const filmsKeys =  Object.entries(films).forEach(([key, value]) =>
-    console.log(([key, value["characters"]]))
-  )
-    const charactersKeys =  Object.entries(characters).forEach(([key, value]) =>
-    console.log(([key, value["films"]]))
-  )
+    const filmsKeys = Object.entries(films).forEach((key, value) => {
+      const keykeyValues = [key, value]
+      console.log(keykeyValues)
+      if (key[0] == "characters"){
+        return  key
+      }
+        return keykeyValues;
+    }
+    )
+    const charactersKeys = Object.entries(characters).forEach((value, key) => {
+      const characterKeyValues = [key, value]
+      console.log(characterKeyValues)
+      return characterKeyValues;
+    }
+    )
 
-    console.log("this is the films and characters:", filmsKeys, charactersKeys)
-  
-    return [filmsKeys, charactersKeys]
-    
+    if (filmsKeys === charactersKeys) {
+      let arr = new Array;
+      arr.push(filmsKeys)
+      return arr;
+    }
   };
 
   return (
@@ -136,33 +146,7 @@ const JFHero = (): JSX.Element => {
           ))}
 
           {console.log("this is from the above function", findCharacterName(filmsTitle, characters))}
-          {characters.map((characters, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Animated
-                animationInDelay={0}
-                animationIn="slideInUp"
-                animationOut="slideOutDown"
-                isVisible
-              >
-                <Card>
-                  <CardMedia
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                    className={classes.cardImage}
-                  />
-                  <CardContent className={classes.h2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {characters.name}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {characters.films}
-                      {characters.url}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Animated>
-            </Grid>
-          ))}
+
         </Grid>
       </Container>
     </div>
