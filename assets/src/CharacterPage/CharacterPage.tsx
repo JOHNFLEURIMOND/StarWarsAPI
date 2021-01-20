@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Animated } from "react-animated-css";
-import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Header from "../Header/Header";
@@ -10,6 +10,8 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import { RouteComponentProps } from 'react-router-dom';
+
 import { fleurimondColors } from "../theme";
 
 const useStyles = makeStyles({
@@ -36,29 +38,41 @@ const useStyles = makeStyles({
   },
 });
 
-const JFHero = (): JSX.Element => {
-  interface StarWarsCharacters {
-    name: string;
-    films: string;
-  }
+interface CharactersPageLocationState {
+  film: string,
+}
+
+const JFCharacterspage = (props: RouteComponentProps<{}, any, CharactersPageLocationState | any>
+): JSX.Element => {
+  console.log("this is charcters pages props.", props.location.state.characters)
 
   const classes = useStyles();
 
-  const CharactersProps: StarWarsCharacters[] = [];
+  const CharactersProps: string[] = [];
 
-  const [characters, setCharactersName]: [
-    StarWarsCharacters[],
-    (posts: StarWarsCharacters[]) => void
+  const [characters, setCharacters]: [
+    string[],
+    (posts: string[]) => void
   ] = useState(CharactersProps);
-  useEffect(() => {
-    getStarWarsFilmTitle();
-  }, []);
 
-  const getStarWarsFilmTitle = async () => {
-    await axios
-      .get("https://swapi.dev/api/people/")
-      .then((result) => setCharactersName(result.data.results));
-  };
+  const getCharacters = async () => {
+    const requests = props.location.state.characters.map(async (url: string) => {
+      const request = await axios.get(url);
+      return request;
+    })
+    axios.all(requests).then(axios.spread((...responses) => {
+      setCharacters(["han"])
+      console.log(responses)
+    })).catch(errors => {
+      return errors
+      // react on errors.
+    })
+  }
+
+
+  useEffect(() => {
+    getCharacters();
+  }, []);
 
   return (
     <div className={classes.container}>
@@ -68,7 +82,7 @@ const JFHero = (): JSX.Element => {
       <Container maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          {characters.map((characters, index) => (
+          {characters.map((character, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Animated
                 animationInDelay={0}
@@ -84,10 +98,7 @@ const JFHero = (): JSX.Element => {
                   />
                   <CardContent className={classes.h2}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {characters.name}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {characters.films}
+                      {character}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -100,4 +111,4 @@ const JFHero = (): JSX.Element => {
   );
 };
 
-export default JFHero;
+export default JFCharacterspage;
